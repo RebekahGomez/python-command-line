@@ -1,6 +1,63 @@
 from models import db, Contact
 
 
+def main():
+    while True:
+        print("1: Create new contact")
+        print("2: List all contacts")
+        print("3: Find contact by name")
+        print("4: Exit")
+        choice = input("Choose a number option: ")
+
+        if choice == "1":
+            first_name = input("Enter first name: ")
+            last_name = input("Enter last name: ")
+            phone = int(input("Enter phone number: "))
+            Contact.create(first_name=first_name,
+                           last_name=last_name, phone=phone)
+
+        # elif choice == "2":
+        #     list_contacts()
+        # elif choice == "3":
+        #     first_name = input("Enter first name: ")
+        #     last_name = input("Enter last name: ")
+        #     find_contact(first_name, last_name)
+        # elif choice == "4":
+        #     break
+        # else:
+        #     print("Invalid option. Please choose 1, 2, 3, or 4")
+
+
+# def create_contact(first_name, last_name, phone):
+#     db.connect()
+#     contact = Contact.create(first_name=first_name,
+#                              last_name=last_name, phone=phone)
+#     db.close()
+#     print(f"Contact {contact.first_name} {contact.last_name} created!")
+
+
+# def list_contacts():
+#     db.connect()
+#     for contact in Contact.select():
+#         print(f"{contact.first_name} {contact.last_name} {contact.phone}")
+#     db.close()
+
+
+# def find_contact(first_name, last_name):
+#     db.connect()
+#     try:
+#         contact = Contact.get((Contact.first_name == first.name) & (
+#             Contact.last_name == last.name))
+#         print(f"{contact.first_name} {contact.last_name} {contact.phone}")
+#     except Contact.DoesNotExist:
+#         print("Contact not found!")
+#     db.close()
+
+
+if __name__ == "__main__":
+    main()
+
+
 # Turns out I don't need separate functions for this project, but I don't want to erase the work I did, even if it was accidentally the wrong work
 # CREATE NEW CONTACT
 # def create_contact(first_name, last_name, phone):

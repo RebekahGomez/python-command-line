@@ -12,4 +12,4 @@ class BaseModel(Model):
 class Contact(BaseModel):
     first_name = CharField()
     last_name = CharField()
-    phone = CharField()
+    phone = IntegerField()
