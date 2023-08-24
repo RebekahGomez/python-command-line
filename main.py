@@ -24,11 +24,10 @@ def main():
 
         elif choice == "3":
             first_name = input("Enter first name: ")
-            last_name = input("Enter last name: ")
+            # last_name = input("Enter last name: ")
             # db.connect()
             try:
-                contact = Contact.get((Contact.first_name == first_name) & (
-                    Contact.last_name == last_name))
+                contact = Contact.get(Contact.first_name == first_name)
                 print(f"{contact.first_name} {contact.last_name} {contact.phone}")
             except Contact.DoesNotExist:
                 print("Contact not found")
@@ -37,6 +36,10 @@ def main():
             break
         else:
             print("Invalid option. Please choose 1, 2, 3, or 4")
+
+
+if __name__ == "__main__":
+    main()
 
 
 # def create_contact(first_name, last_name, phone):
@@ -63,10 +66,6 @@ def main():
 #     except Contact.DoesNotExist:
 #         print("Contact not found!")
 #     db.close()
-
-
-if __name__ == "__main__":
-    main()
 
 
 # Turns out I don't need separate functions for this project, but I don't want to erase the work I did, even if it was accidentally the wrong work
