@@ -16,16 +16,27 @@ def main():
             Contact.create(first_name=first_name,
                            last_name=last_name, phone=phone)
 
-        # elif choice == "2":
-        #     list_contacts()
-        # elif choice == "3":
-        #     first_name = input("Enter first name: ")
-        #     last_name = input("Enter last name: ")
-        #     find_contact(first_name, last_name)
-        # elif choice == "4":
-        #     break
-        # else:
-        #     print("Invalid option. Please choose 1, 2, 3, or 4")
+        elif choice == "2":
+            # db.connect()
+            for contact in Contact.select():
+                print(f"{contact.first_name} {contact.last_name} {contact.phone}")
+            db.close()
+
+        elif choice == "3":
+            first_name = input("Enter first name: ")
+            last_name = input("Enter last name: ")
+            # db.connect()
+            try:
+                contact = Contact.get((Contact.first_name == first_name) & (
+                    Contact.last_name == last_name))
+                print(f"{contact.first_name} {contact.last_name} {contact.phone}")
+            except Contact.DoesNotExist:
+                print("Contact not found")
+            db.close()
+        elif choice == "4":
+            break
+        else:
+            print("Invalid option. Please choose 1, 2, 3, or 4")
 
 
 # def create_contact(first_name, last_name, phone):
