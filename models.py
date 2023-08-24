@@ -1,12 +1,15 @@
 from peewee import *
 
-db = SqliteDatabase('contacts.db')
+db = PostgresqlDatabase('Contact', user='rebekah',
+                        password='', host='localhost', port=5432)
 
 
-class Contact(Model):
+class BaseModel(Model):
+    class Meta:
+        database = db
+
+
+class Contact(BaseModel):
     first_name = CharField()
     last_name = CharField()
     phone = CharField()
-
-    class Meta:
-        database = db
